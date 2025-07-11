@@ -1,0 +1,116 @@
+#dars1 #declareVariables
+Go da o'zgaruvchilarni e'lon qilishni ikki xil usuli bor ekan. 
+
+1 - var ozgaruvchi_nomi ozgaruvchi_turi = qiymat;
+var age int = 24;
+2 - ozgaruvchi_nomi := qiymat;
+age := 24;
+
+Birinchi holatda o'zgaruvchining qaysi ma'lumot turiga tegishliligini yozish kerak bo'lsa, ikkinchi holatda esa, qiymatga qarab malumot turi avtomatik aniqlanadi. (Lekin har ikki holatda ham ma'lumot turi berilmasa  qiymatga qarab malumot turi avtomatik aniqlanaveradi)
+
+Birinchi holatda dastlabki qiymatni berish majburiy emas. Agar dastlabki qiymat berilmasa, o'zgaruvchining ma'lumot turidagi standart qiymati avtomatik tarzda beriladi. Lekin ikkinchi holatda dastlabki qiymatni berish majburiy.
+
+var name string;
+fmt.Println(name) // ""
+name = "Mavlon"
+fmt.Println(name) // "Mavlon"
+
+age := 24
+
+Birinchi holatda funksiyaning tashqarida ham o'zgaruvchi e'lon qilsa bo'ladi, lekin ikkinchi holatda ushbu xatoni qaytaradi: ''./prog.go:5:1: syntax error: non-declaration statement outside function body''
+
+
+package main
+import ("fmt")
+ 
+var a int
+var b int = 2
+var c = 3
+ 
+func main() {
+  a = 1
+  fmt.Println(a)
+  fmt.Println(b)
+  fmt.Println(c)
+}
+//===========================
+
+package main
+import ("fmt")
+ 
+a := 1
+ 
+func main() {
+  fmt.Println(a) // syntax error: non-declaration statement outside function body
+}
+Go da o'zgaruvchilarni nomlash qoidasi:
+
+    1. O'zgaruvchining nomi harf yoki pastki chiziq (_) bilan boshlanishi kerak;
+    2. O'zgaruvchining nomi raqam bilan boshlanishi mumkin emas;
+    3. O'zgaruvchining nomi faqat harf, raqam va pastki chiziq (_) lar bilan nomlanishi mumkin (a-z, A-Z, 0-9, _);
+    4. O'zgaruvchining nomilar katta-kichik harflarga sezgir (masalan, age, Age, AGE boshqa-boshqa o'zgaruvchilar);
+    5. O'zgaruvchining nomi bo'shliqlarni o'z ichiga olmaydi;
+    6.O'zgaruvchining nomi GO ning kalit so'zlaridan iborat bo'lmasligi kerak.
+
+Go da bir nechta o'zgaruvchilarni e'lon qilish
+    Go da bir nechta o'zgaruvchilarni bir vaqt(qator) da e'lon qilish mumkin.
+package main
+import ("fmt")
+ 
+func main() {
+  var a, b, c, d int = 1, 3, 5, 7
+ 
+  fmt.Println(a)
+  fmt.Println(b)
+  fmt.Println(c)
+  fmt.Println(d)
+}
+ 
+!!! Agar o'zgaruvchilarni e'lon qilishda ma'lumot turi kiritilgan bo'lsa, barcha o'zgaruvchilarga faqatgina o'sha turdagi ma'lumotlarni biriktirish kerak bo'ladi, ma'lumot turi berib yuborilmasa, istalgan turdagi ma'lumot turlarini aralash holatda berish mumkin.
+
+package main
+import ("fmt")
+ 
+func main() {
+  var a, b, c, d int = 1, 3, 5, 7
+ 
+  fmt.Println(a) // 1
+  fmt.Println(b) // 3
+  fmt.Println(c) // 5 
+  fmt.Println(d) // 7
+}
+//========================
+
+package main
+import ("fmt")
+ 
+func main() {
+  var a, b = 6, "Hello"
+  c, d := 7, "World!"
+ 
+  fmt.Println(a) // 6
+  fmt.Println(b) // "Hello"
+  fmt.Println(c) // 7
+  fmt.Println(d) // "World!"
+}
+Ko'rinishni yaxshilash uchun ushbu holatdan ham foydalansa bo'ladi
+
+package main
+import ("fmt")
+ 
+func main() {
+   var (
+     a int
+     b int = 1
+     c string = "hello"
+   )
+ 
+  fmt.Println(a) // 0
+  fmt.Println(b) // 1
+  fmt.Println(c) // "hello"
+}
+Go da o'zgarmas qiymatlarni e'lon qilish.
+
+Go da o'zgarmas qiymatlarni e'lon qilish uchun, "const" kalit so'zidan foydalaniladi. O'zgarmas qiymatlarni nomini katta harflar bilan yozish tavsiya qilinadi hamda unga dastlabki qiymatni biriktirish shart!
+
+const PI float = 3.14
