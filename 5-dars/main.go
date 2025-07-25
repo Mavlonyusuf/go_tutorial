@@ -1,26 +1,16 @@
-// map ma'lumot tuzilmasi haqida
-// map[KeyType]ValueType
-
 package main
 
-import "fmt"
-
+import (
+	"fmt"
+)
+ 
 func main() {
+  var mashina = map[string]string{"brand": "KIA", "model": "Carnival", "rang": "Qora", "yili": "2025", "yurgan_yol": ""}
+	yangi_mashina := mashina
+	fmt.Println(mashina) // map[brand:KIA model:Carnival rang:Qora yili:2025 yurgan_yol:]
+	fmt.Println(yangi_mashina) // map[brand:KIA model:Carnival rang:Qora yili:2025 yurgan_yol:]
+	delete(yangi_mashina, "yurgan_yol")
+	fmt.Println(mashina) // map[brand:KIA model:Carnival rang:Qora yili:2025]
+	fmt.Println(yangi_mashina) // map[brand:KIA model:Carnival rang:Qora yili:2025]
 
-	statuses := make(map[string]int)
-
-	// map'ga qiymatlar qo'shish:
-	statuses["pending"] = 0
-	statuses["inited"] = 1
-	statuses["running"] = 2
-	statuses["timedout"] = 3
-	statuses["successful"] = 4
-	statuses["failed"] = 5
-
-	// map'dan qiymatni o'qish:
-	var successfulStatus = statuses["successful"]
-	fmt.Println(successfulStatus)
-
-	// map'dan bitta elementni o'chirib tashlash:
-	delete(statuses, "timedout")
 }
